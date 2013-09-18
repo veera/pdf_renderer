@@ -1,3 +1,39 @@
-= PdfRenderer
+= Pdf Renderer plugin
 
-This project rocks and uses MIT-LICENSE.
+This plugin gives you the ability to download view content in pdf format. The builder options are the same as format.html and format.js
+
+
+== Usage
+
+Controller
+
+class HomeController < ApplicationController
+  def index
+    @welcome_text = "This sample content goes as pdf format"
+    respond_to do |format|
+      format.html
+      format.pdf { render pdf: "file_name" }
+    end
+  end
+end
+
+View
+
+In home/index.pdf.erb 
+
+<%=  @welcome_text %>
+
+PDF available
+
+http://example.com/home/index.pdf
+
+
+== Dependencies
+
+  install prawn (= 0.12.0):
+  sudo gem install prawn (= 0.12.0)
+
+
+== Install
+
+  ./script/plugin install git://github.com/veera/pdf_renderer.git
